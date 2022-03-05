@@ -86,10 +86,10 @@ class CheatslistMenu:
         max_width = win_width - len(prompt) - len("\n")
 
 
-        col4_size = math.floor(max_width * 14 / 100)
-        col3_size = math.floor(max_width * 8 / 100)
-        col1_size = math.floor(max_width * 23 / 100)
-        col2_size = math.floor(max_width * 55 / 100)
+        #col4_size = math.floor(max_width * 14 / 100)
+        col3_size = math.floor(max_width * 14 / 100)
+        col1_size = math.floor(max_width * 26 / 100)
+        col2_size = math.floor(max_width * 58 / 100)
         #col0_size = math.floor(max_width * 20 / 100)
 
         title = cheat.tags if cheat.tags != '' else cheat.str_title
@@ -98,8 +98,8 @@ class CheatslistMenu:
 
         if selected:
             win.addstr(prompt, curses.color_pair(Gui.CURSOR_COLOR_SELECT))
-            win.addstr("{:{}s}".format(Gui.draw_string(tags, col4_size), col4_size),
-                       curses.color_pair(Gui.COL4_COLOR_SELECT))
+            #win.addstr("{:{}s}".format(Gui.draw_string(tags, col4_size), col4_size),
+            #           curses.color_pair(Gui.COL4_COLOR_SELECT))
             win.addstr("{:{}s}".format(Gui.draw_string(cheat.str_title, col3_size), col3_size),
                        curses.color_pair(Gui.COL3_COLOR_SELECT))
             win.addstr("{:{}s}".format(Gui.draw_string(cheat.name, col1_size), col1_size),
@@ -111,12 +111,12 @@ class CheatslistMenu:
             win.addstr("\n")
         else:
             win.addstr(' ' * len(prompt), curses.color_pair(Gui.BASIC_COLOR))
-            if tags.startswith('[W]'):
-                win.addstr("{:{}s}".format(Gui.draw_string(tags, col4_size), col4_size),
-                           curses.color_pair(Gui.COL5_COLOR))
-            else:
-                win.addstr("{:{}s}".format(Gui.draw_string(tags, col4_size), col4_size),
-                           curses.color_pair(Gui.COL4_COLOR))
+            #if tags.startswith('[W]'):
+            #    win.addstr("{:{}s}".format(Gui.draw_string(tags, col4_size), col4_size),
+            #               curses.color_pair(Gui.COL5_COLOR))
+            #else:
+            #    win.addstr("{:{}s}".format(Gui.draw_string(tags, col4_size), col4_size),
+            #               curses.color_pair(Gui.COL4_COLOR))
             win.addstr("{:{}s}".format(Gui.draw_string(cheat.str_title, col3_size), col3_size),
                        curses.color_pair(Gui.COL1_COLOR))
             win.addstr("{:{}s}".format(Gui.draw_string(cheat.name, col1_size), col1_size),

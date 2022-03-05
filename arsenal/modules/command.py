@@ -16,8 +16,8 @@ class Command:
 
         self.cmd_tags = cheat.command_tags
         self.description = ''
-        for tag in self.cmd_tags:
-            self.description += '[' + self.cmd_tags[tag] + '] '
+        #for tag in self.cmd_tags:
+        #    self.description += '[' + self.cmd_tags[tag] + '] '
         if self.description != '' and cheat.description != '':
             self.description += '\n-----\n'
         self.description += cheat.description
