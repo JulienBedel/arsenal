@@ -30,3 +30,11 @@ bloodhound.py -c All -d <domain> -u <user> -p '<password>' -dc <domain-controlle
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN
+
+## BloodHound module for CME (mark as owned)
+
+```
+cme smb <target> -u <user> -p '<password>' -d <domain> -M bh_owned -o PASS=<neo4j_password>
+```
+
+= neo4j_password: mustafar4thewin
