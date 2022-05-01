@@ -3,21 +3,24 @@
 ## SharpHound.ps1 ingestor from non-domain computer
 
 ```
-runas /netonly /user:<domain>\<user> powershell.exe
 Import-Module Sharphound.ps1
-Invoke-BloodHound --CollectionMethod All --OverrideUserName --Domain <domain>
+Invoke-BloodHound -CollectionMethod All -Domain <domain> -OverrideUsername <user> -ldapusername <user> -ldappassword <password> -domaincontroller <domain-controller> 
 ```
 
+= domain-controller: $DOMAIN_CONTROLLER
 = user: $USER
+= password: $PASSWORD
 = domain: $DOMAIN
 
 ## SharpHound.exe ingestor from non-domain computer
 
 ```
-runas /netonly /user:<domain>\<user> SharpHound.exe --CollectionMethod All --OverrideUserName --Domain <domain>
+.\SharpHound.exe --collectionmethods All --domain <domain> --overrideusername <user> --ldapusername <user> --ldappassword <password> --domaincontroller <domain-controller>
 ```
 
+= domain-controller: $DOMAIN_CONTROLLER
 = user: $USER
+= password: $PASSWORD
 = domain: $DOMAIN
 
 ## BloodHound.py ingestor
@@ -38,3 +41,9 @@ cme smb <target> -u <user> -p '<password>' -d <domain> -M bh_owned -o PASS=<neo4
 ```
 
 = neo4j_password: mustafar4thewin
+
+## BloodHound import
+
+```
+bloodhound-import -du neo4j -dp <password> <bloodhound_files>/*.json
+```

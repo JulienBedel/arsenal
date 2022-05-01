@@ -79,10 +79,21 @@ cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M petitpotam
 = password: $PASSWORD
 = domain: $DOMAIN
 
-## Check Print Nightmare (CVE-2021-34527)
+## Check Print Nightmare with Docker (CVE-2021-34527)
 
 ```
 docker run -v "<target>:/target.txt"-it itwasalladream -u <user> -p '<password>' -d <domain> target.txt
+```
+
+= user: $USER
+= password: $PASSWORD
+= domain: $DOMAIN
+= target: $PWD/ad_computers.txt
+
+## Check Print Nightmare with local install (CVE-2021-34527)
+
+```
+itwasalladream -u <user> -p '<password>' -d <domain> target.txt
 ```
 
 = user: $USER
