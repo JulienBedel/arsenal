@@ -7,7 +7,7 @@ Import-Module Sharphound.ps1
 Invoke-BloodHound -CollectionMethod All -Domain <domain> -OverrideUsername <user> -ldapusername <user> -ldappassword <password> -domaincontroller <domain-controller> 
 ```
 
-= domain-controller: $DOMAIN_CONTROLLER
+= domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN
@@ -18,7 +18,7 @@ Invoke-BloodHound -CollectionMethod All -Domain <domain> -OverrideUsername <user
 .\SharpHound.exe --collectionmethods All --domain <domain> --overrideusername <user> --ldapusername <user> --ldappassword <password> --domaincontroller <domain-controller>
 ```
 
-= domain-controller: $DOMAIN_CONTROLLER
+= domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN
@@ -29,7 +29,7 @@ Invoke-BloodHound -CollectionMethod All -Domain <domain> -OverrideUsername <user
 bloodhound.py -c All -d <domain> -u <user> -p '<password>' -dc <domain-controller>
 ```
 
-= domain-controller: $DOMAIN_CONTROLLER
+= domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN

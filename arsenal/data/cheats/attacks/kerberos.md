@@ -6,7 +6,7 @@
 GetUserSPNs.py -request -dc-ip <domain-controller> <domain>/<user>:'<password>'
 ```
 
-= domain-controller: $DOMAIN_CONTROLLER
+= domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN

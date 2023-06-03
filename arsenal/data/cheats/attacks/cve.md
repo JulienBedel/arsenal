@@ -6,7 +6,7 @@
 cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M gpp_password
 ```
 
-= domain-controller: $DOMAIN_CONTROLLER
+= domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN
@@ -55,7 +55,7 @@ nmap -Pn --script smb-vuln-ms17-010 -p139,445 <target>
 cme smb <domain-controller> -M zerologon
 ```
 
-= domain-controller: $DOMAIN_CONTROLLER
+= domain-controller: $DC
 
 ## Check noPac (CVE-2021-42278 and CVE-2021-42287)
 
@@ -74,7 +74,7 @@ cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M nopac
 cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M petitpotam
 ```
 
-= domain-controller: $DOMAIN_CONTROLLER
+= domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN
