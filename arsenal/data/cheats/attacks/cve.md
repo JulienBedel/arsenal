@@ -3,7 +3,7 @@
 ## Check & Exploit GPP SYSVOL (MS14-025) - cme
 
 ```
-cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M gpp_password
+cme smb <domain-controller> -u <user> -p <password> -d <domain> -M gpp_password
 ```
 
 = domain-controller: $DC
@@ -14,8 +14,13 @@ cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M gpp_passwor
 ## Check & Exloit GPP SYSVOL (MS14-025) - msf
 
 ```
-msfconsole -x "use scanner/smb/smb_enum_gpp"
+msfconsole -x "use scanner/smb/smb_enum_gpp;set RHOST <domain-controller>;set SMBDomain <domain>;set SMBUser <user>;set SMBPass <password>"
 ```
+
+= domain-controller: $DC
+= user: $USER
+= password: $PASSWORD
+= domain: $DOMAIN
 
 ## Check SMB vulnerabilities
 
@@ -23,7 +28,7 @@ msfconsole -x "use scanner/smb/smb_enum_gpp"
 nmap -Pn --script smb-vuln* -p139,445 <target>
 ```
 
-= target: ./targets/domain/computers.txt
+= target: $TARGETS/computers.list
 
 ## Check Eternal Blue (MS17-010) - cme
 
@@ -31,7 +36,7 @@ nmap -Pn --script smb-vuln* -p139,445 <target>
 cme smb <target> -M ms17
 ```
 
-= target: ./targets/domain/computers.txt
+= target: $TARGETS/computers.list
 
 ## Check BlueKeep (CVE-2019-0708)
 
@@ -39,7 +44,7 @@ cme smb <target> -M ms17
 rdpscan <target>
 ```
 
-= target: ./targets/domain/computers.txt
+= target: $TARGETS/computers.list
 
 ## Check Eternal Blue (MS17-010) - nmap
 
@@ -47,7 +52,7 @@ rdpscan <target>
 nmap -Pn --script smb-vuln-ms17-010 -p139,445 <target>
 ```
 
-= target: ./targets/domain/computers.txt
+= target: $TARGETS/computers.list
 
 ## Check Zero Logon (CVE-2020-1472)
 
@@ -61,17 +66,6 @@ cme smb <domain-controller> -M zerologon
 
 ```
 cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M nopac
-```
-
-= domain-controller: DOMAIN_CONTROLLER
-= user: ${USER}
-= password: ${PASSWORD}
-= domain: ${DOMAIN}
-
-## Check PetitPotam (CVE-2021-36942)
-
-```
-cme smb <domain-controller> -u <user> -p '<password>' -d <domain> -M petitpotam
 ```
 
 = domain-controller: $DC
@@ -88,7 +82,7 @@ docker run -v "<target>:/target.txt"-it itwasalladream -u <user> -p '<password>'
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN
-= target: $PWD/ad_computers.txt
+= target: $TARGETS/computers.list
 
 ## Check Print Nightmare with local install (CVE-2021-34527)
 
@@ -99,7 +93,7 @@ itwasalladream -u <user> -p '<password>' -d <domain> target.txt
 = user: $USER
 = password: $PASSWORD
 = domain: $DOMAIN
-= target: $PWD/ad_computers.txt
+= target: $TARGETS/computers.list
 
 ## Exploit Print Nightmare (CVE-2021-34527)
 

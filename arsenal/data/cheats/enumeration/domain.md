@@ -1,9 +1,14 @@
 # Domain Enumeration
 
-## Find DNS servers in use
+## Find DNS servers in use (resolvectl)
 
 ```
-systemd-resolve --status
+resolvectl status | grep 'DNS Servers'
+```
+
+## Find DNS servers in use (nmcli)
+
+```
 nmcli dev show | grep DNS | sed 's/\s\s*/\t/g' | cut -f 2
 ```
 
@@ -37,18 +42,27 @@ nslookup -type=srv _ldap._tcp.dc._msdcs.<fqdn>
 ## Domain enumeration - enum4linux
 
 ```
-enum4linux -a -u '<user>' -p '<password>' -w <domain> <domain-controller>
+enum4linux -a -u <user> -p <password> -w <domain> <domain-controller>
 ```
 
 = domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
+= domain: $DOMAIN
+
+## Anonymous domain enumeration - enum4linux
+
+```
+enum4linux -a -u '' -p '' -w <domain> <domain-controller>
+```
+
+= domain-controller: $DC
 = domain: $DOMAIN
 
 ## Domain enumeration - enum4linux-ng
 
 ```
-enum4linux-ng -A -u <user> -p '<password>' -w <domain> <domain-controller>
+enum4linux-ng -A -u <user> -p <password> -w <domain> <domain-controller>
 ```
 
 = domain-controller: $DC
@@ -56,24 +70,22 @@ enum4linux-ng -A -u <user> -p '<password>' -w <domain> <domain-controller>
 = password: $PASSWORD
 = domain: $DOMAIN
 
-## Find basic domain info (anonymous)
+## Anonymous domain enumeration - enum4linux-ng
 
 ```
-ldapsearch-ad.py -l <domain-controller> -t info
-```
-
-= domain-controller: $DC
-
-## List domain users - enum4linux-ng
-
-```
-enum4linux-ng -u '<user>' -p '<password>' -w <domain> <domain-controller> -U -oJ temp  > /dev/null 2>&1 ; jq -r '.users[].username' temp.json ; rm temp.json
+enum4linux-ng -A -w <domain> <domain-controller>
 ```
 
 = domain-controller: $DC
-= user: $USER
-= password: $PASSWORD
 = domain: $DOMAIN
+
+## Anonymous domain enumeration - ldapsearch
+
+```
+ldapsearch-ad -l <domain-controller> -t info
+```
+
+= domain-controller: $DC
 
 ## List domain users
 
@@ -108,21 +120,10 @@ windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> -m c
 = password: $PASSWORD
 = domain: $DOMAIN
 
-## List domain privileged users
-
-```
-windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --module privileged-users
-```
-
-= domain-controller: $DC
-= user: $USER
-= password: $PASSWORD
-= domain: $DOMAIN
-
 ## List domain DNS entries - adidnsdump
 
 ```
-adidnsdump -u '<user>' -p '<password>' <domain_controller>
+adidnsdump -u <user> -p <password> <domain_controller>
 ```
 
 = domain-controller: $DC
@@ -132,9 +133,10 @@ adidnsdump -u '<user>' -p '<password>' <domain_controller>
 ## List domain DNS entries - windapsearch
 
 ```
-windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --module dns-names
+windapsearch -d <domain> -u <user> -p <password> --dc <domain-controller> --module dns-names
 ```
 
+= domain: $DOMAIN
 = domain-controller: $DC
 = user: $USER
 = password: $PASSWORD
@@ -145,6 +147,7 @@ windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --mo
 windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --module dns-zones
 ```
 
+= domain: $DOMAIN
 = domain-controller: $DC
 = user: $USER
 = password: $PASSWORD

