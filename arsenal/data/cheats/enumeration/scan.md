@@ -52,3 +52,10 @@ cme smb <target>
 ```
 nmap -Pn -p445 <target> -oG - | awk '/445\/open/ {print $2}'
 ```
+
+## gowitness
+
+```
+sudo docker run --rm -v $(pwd):/data -p7171:7171 leonjza/gowitness gowitness nmap -f /data/nmap/192.168.201.85.xml --open --service-contains http
+```
+
