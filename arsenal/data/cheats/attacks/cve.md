@@ -25,7 +25,7 @@ msfconsole -x "use scanner/smb/smb_enum_gpp;set RHOST <domain-controller>;set SM
 ## Check SMB vulnerabilities
 
 ```
-nmap -Pn --script smb-vuln* -p139,445 <target>
+nmap -Pn --script smb-vuln* -p139,445 -iL <target>
 ```
 
 = target: $TARGETS/computers.list
