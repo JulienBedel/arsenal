@@ -15,7 +15,7 @@ cme smb <target> -u 'a' -p ''
 ## SMB authentication (domain) - CME
 
 ```
-cme smb <target> -u <user> -p '<password>' -d <domain>
+cme smb <target> -u <user> -p <password> -d <domain>
 ```
 
 = user: $USER
@@ -25,7 +25,7 @@ cme smb <target> -u <user> -p '<password>' -d <domain>
 ## SMB authentication (domain) - Impacket
 
 ```
-smbexec.py <domain>/<username>:'<password>'@<target>
+smbexec.py <domain>/<username>:<password>@<target>
 ```
 
 = user: $USER
@@ -35,7 +35,7 @@ smbexec.py <domain>/<username>:'<password>'@<target>
 ## SMB authentication (local)
 
 ```
-cme smb <target> -u <user> -p '<password>' --local-auth
+cme smb <target> -u <user> -p <password> --local-auth
 ```
 
 ## SMB authentication (Pass-The-Hash)
@@ -47,7 +47,7 @@ cme smb <target> -u <user> -H <hash> --local-auth
 ## WMI Authentication (domain)
 
 ```
-wmiexec.py <domain>/<user>:'<password>'@<target>
+wmiexec.py <domain>/<user>:<password>@<target>
 ```
 
 = user: $USER
@@ -63,7 +63,7 @@ wmiexec.py -hashes <hash> <user>@<target>
 ## Powershell Authentication (domain)
 
 ```
-psexec.py <domain>/<user>:'<password>'@<target>
+psexec.py <domain>/<user>:<password>@<target>
 ```
 
 ## Powershell Authentication (Pass-The-Hash)
