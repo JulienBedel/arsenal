@@ -30,3 +30,15 @@ net group <admin group> <user> /ADD /DOMAIN
 ```
 net user /add <user> "<password>" /domain
 ```
+
+## Download file from HTTP
+
+```
+iwr -uri <url> -Outfile <file>
+```
+
+## Copy file from SMB share
+
+```
+Copy-Item -Path <source> -Destination <destination>
+```
