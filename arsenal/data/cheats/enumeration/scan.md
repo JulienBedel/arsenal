@@ -36,7 +36,7 @@ https://nmap.org/book/scan-methods-udp-scan.html
 https://nmap.org/book/reduce-scantime.html
 
 ```
-TODO
+nmap -sU <target> --max-rtt-timeout 500ms --initial-rtt-timeout 250ms --max-retries 2   
 ```
 
 ## Enumerate hosts with CME
