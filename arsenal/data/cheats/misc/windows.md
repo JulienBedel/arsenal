@@ -25,6 +25,12 @@ net localgroup <admin group> <username> /add
 net group <admin group> <user> /ADD /DOMAIN
 ```
 
+## Add new local user
+
+```
+net user /add <user> "<password>"
+```
+
 ## Add new domain user
 
 ```
@@ -41,4 +47,10 @@ iwr -uri <url> -Outfile <file>
 
 ```
 Copy-Item -Path <source> -Destination <destination>
+```
+
+## Use SMB share (before copy)
+
+```
+net use x: \\<server>\<sharename> /USER:<domain>\<username> <password>
 ```
